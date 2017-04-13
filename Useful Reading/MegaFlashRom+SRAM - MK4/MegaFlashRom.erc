@@ -1,0 +1,31 @@
+EAGLE Version 4.16r1 Copyright (c) 1988-2006 CadSoft
+
+Electrical Rule Check for F:/Phill/Eagle/BBC/MegaFlashRom/MegaFlashRom - MK2/MegaFlashRom.sch at 29/08/2006 09:08:29 
+
+WARNING: Sheet 1/1: POWER Pin IC2 PGM connected to N$5
+WARNING: Sheet 1/1: POWER Pin IC2 VPP connected to N$4
+ERROR: Sheet 1/1: unconnected INPUT Pin: IC3 VPP
+ERROR: Sheet 1/1: unconnected INPUT Pin: IC3 /PGM
+ERROR: Sheet 1/1: unconnected INPUT Pin: IC3 /OE
+ERROR: Sheet 1/1: unconnected INPUT Pin: IC3 /CE
+WARNING: Sheet 1/1: POWER Pin IC76/+UB +UB connected to VCC
+WARNING: Sheet 1/1: POWER Pin IC76/-UB -UB connected to GND
+ERROR: Only INPUT Pins on net A0
+ERROR: Only INPUT Pins on net A1
+ERROR: Only INPUT Pins on net A2
+ERROR: Only INPUT Pins on net A3
+ERROR: Only INPUT Pins on net A4
+ERROR: Only INPUT Pins on net A5
+ERROR: Only INPUT Pins on net A6
+ERROR: Only INPUT Pins on net A7
+ERROR: Only INPUT Pins on net A8
+ERROR: Only INPUT Pins on net A9
+ERROR: Only INPUT Pins on net A10
+ERROR: Only INPUT Pins on net A11
+ERROR: Only INPUT Pins on net A12
+ERROR: Only INPUT Pins on net A13
+
+Board and schematic are consistent
+
+   18 errors
+    4 warnings
