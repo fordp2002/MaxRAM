@@ -1,0 +1,72 @@
+Name     MaxRAM01;
+PartNo   00;
+Date     2017-04-15;
+Revision 01;
+Designer FordP2002;
+Company  None;
+Assembly None;
+Location UK;
+/* Device   f1502ispplcc44;*/
+Device   virtual;
+
+/* *************** INPUT PINS *********************/
+PIN    4 = AD0;		/* ADDRESS PINS                    */
+PIN    5 = AD1;		/*                                 */
+
+PIN    1 = !CsIn;		/*                                 */
+PIN   44 = !We;		/*                                 */
+
+PIN   16 = DB0;		/* DATA BUS IN                     */
+PIN   17 = DB1;		/*                                 */ 
+PIN   18 = DB2;		/*                                 */ 
+PIN   19 = DB3;		/*                                 */ 
+PIN   20 = DB4;		/*                                 */ 
+PIN   21 = DB5;		/*                                 */ 
+PIN   24 = DB6;		/*                                 */ 
+PIN   25 = DB7;		/*                                 */ 
+
+PIN   43 = CLK;		/*                                 */ 
+PIN    2 = !Romsel;	/*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN   28 = SL0;		/*                                 */ 
+PIN   29 = SL1;		/*                                 */ 
+PIN   31 = SL2;		/*                                 */ 
+PIN   33 = SL3;		/*                                 */ 
+PIN   34 = SL4;		/*                                 */ 
+
+PIN   40 = !FlashCE;
+PIN   41 = !RamCE;
+
+/* *************** INTENAL D TYPES *****************/
+PINNODE   611  = SD0;
+PINNODE   612  = SD1;
+PINNODE   613  = SD2;
+PINNODE   614  = SD3;
+PINNODE   615  = SD4;
+PINNODE   616  = SD5;
+PINNODE   617  = SD6;
+PINNODE   618  = SD7;
+
+/* ******************** LOGIC **********************/
+[SD0..SD7].d		= [DB0..DB7];
+[SD0..SD6].CE 		= Romsel & !We;
+SD7.CE 			= Romsel & !We & !AD1 & AD0 ;
+[SD0..SD7].CK 		= CLK;
+[SL0..SL4]			= [SD0..SD4].dq;
+
+/* Max RAM has 64 16KB Banks						*/
+/* 32 RAM Banks (0 - 31) and 32 Flash Banks (32 - 63)		*/
+/* Banks 0 - 15 are the regular BBC banks				*/
+/* Banks 16 - 63 are extra banks that are not visible to 	*/
+/*  the BBC MOS or normal software					*/
+/* The RAM banks and Flash banks can be swapped by writing  */
+/* to 0xFE31 with the MSB set						*/
+/* This setting will persist when 0xFE30 is written after	*/			
+/* Add 64 to 0xFE30 to allow writing in all banks 		*/
+/* No Flash writes allowed in the regular banks 0 - 15 	*/
+FlashCE			= (SD5 $ !SD7) & CsIn & (!We # SD4 # SD6);
+/* Ram locked when accessed in banks 0-3 or 8 - 11 		*/
+RamCE				= (!SD5 $ !SD7) & CsIn & (!We # SD2 # SD4 # SD6);
+
+/* =================== END OF DESIGN INFO - NOTES FOLLOW ================= */
