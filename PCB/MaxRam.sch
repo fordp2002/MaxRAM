@@ -139,8 +139,6 @@ F 3 "" H 3050 3050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Entry Wire Line
-	7800 3100 7900 3200
-Entry Wire Line
 	7900 3300 8000 3200
 Entry Wire Line
 	7900 3400 8000 3300
@@ -274,12 +272,12 @@ $EndComp
 $Comp
 L +5V #PWR03
 U 1 1 58E690CD
-P 9700 700
-F 0 "#PWR03" H 9700 550 50  0001 C CNN
-F 1 "+5V" H 9700 840 50  0000 C CNN
-F 2 "" H 9700 700 50  0001 C CNN
-F 3 "" H 9700 700 50  0001 C CNN
-	1    9700 700 
+P 9700 650
+F 0 "#PWR03" H 9700 500 50  0001 C CNN
+F 1 "+5V" H 9700 790 50  0000 C CNN
+F 2 "" H 9700 650 50  0001 C CNN
+F 3 "" H 9700 650 50  0001 C CNN
+	1    9700 650 
 	1    0    0    -1  
 $EndComp
 Entry Wire Line
@@ -556,15 +554,13 @@ Entry Wire Line
 Entry Wire Line
 	4500 4100 4600 4200
 Entry Wire Line
-	4500 4250 4600 4350
+	4500 4200 4600 4300
 Text Label 3950 3650 0    60   ~ 0
 S14
 Text Label 3950 3750 0    60   ~ 0
 S15
 Text Label 3950 3850 0    60   ~ 0
 S16
-Text Label 3900 4050 0    60   ~ 0
-S17
 Entry Wire Line
 	4550 3350 4650 3250
 Entry Wire Line
@@ -959,11 +955,11 @@ Wire Wire Line
 Wire Wire Line
 	7150 3900 8200 3900
 Wire Wire Line
-	4700 4850 7350 4850
+	4700 4850 7150 4850
 Wire Wire Line
-	4700 4850 4700 4650
+	4700 4650 4700 4850
 Wire Wire Line
-	4700 4650 4150 4650
+	3950 4650 4700 4650
 Wire Bus Line
 	4250 950  4250 1650
 Wire Wire Line
@@ -981,13 +977,7 @@ Wire Wire Line
 Wire Wire Line
 	4050 4100 4500 4100
 Wire Wire Line
-	4050 4100 4050 4050
-Wire Wire Line
-	4050 4050 3950 4050
-Wire Wire Line
-	3950 4150 4300 4150
-Wire Wire Line
-	4300 4150 4300 4250
+	4050 4050 4050 4100
 Wire Bus Line
 	4650 1200 4650 3250
 Wire Wire Line
@@ -1046,8 +1036,6 @@ Wire Wire Line
 	5200 5350 6150 5350
 Wire Wire Line
 	5400 5600 5400 5350
-Wire Wire Line
-	5400 5800 5300 5800
 Connection ~ 5350 5900
 Connection ~ 5800 6100
 Wire Wire Line
@@ -1071,10 +1059,6 @@ Wire Wire Line
 	7700 3000 7900 3000
 Wire Wire Line
 	7900 3000 7900 3100
-Wire Wire Line
-	7800 3100 7700 3100
-Text Label 7650 3100 0    60   ~ 0
-S14
 Wire Wire Line
 	10250 3200 10000 3200
 Wire Wire Line
@@ -1107,8 +1091,65 @@ Connection ~ 6150 6100
 Wire Wire Line
 	6150 5350 6150 5650
 Connection ~ 5400 5350
-Text Label 3850 4150 0    60   ~ 0
-S18
+$Comp
+L VCC #PWR05
+U 1 1 58F79FC2
+P 9850 650
+F 0 "#PWR05" H 9850 500 50  0001 C CNN
+F 1 "VCC" H 9850 800 50  0000 C CNN
+F 2 "" H 9850 650 50  0001 C CNN
+F 3 "" H 9850 650 50  0001 C CNN
+	1    9850 650 
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	4300 4250 4500 4250
+	9850 650  9850 700 
+Connection ~ 9850 700 
+Wire Wire Line
+	9700 650  9700 700 
+Text Label 3800 4850 0    60   ~ 0
+RAM_CE
+Text Label 4250 4650 0    60   ~ 0
+FLASH_CE
+Text Label 8050 1450 0    60   ~ 0
+nOE
+Text Label 7650 3000 0    60   ~ 0
+PIN29
+Wire Wire Line
+	4050 4050 3950 4050
+NoConn ~ 900  2600
+NoConn ~ 10250 3400
+NoConn ~ 10250 2700
+NoConn ~ 3950 2050
+NoConn ~ 3950 2150
+NoConn ~ 3950 2250
+NoConn ~ 3950 2350
+NoConn ~ 3950 1850
+NoConn ~ 3950 3450
+NoConn ~ 3950 3550
+NoConn ~ 3950 4250
+NoConn ~ 3950 4350
+NoConn ~ 3950 4550
+NoConn ~ 3400 5550
+NoConn ~ 3400 5650
+NoConn ~ 3900 5550
+NoConn ~ 3950 2550
+Wire Wire Line
+	4500 4200 4050 4200
+Wire Wire Line
+	4050 4200 4050 4150
+Wire Wire Line
+	4050 4150 3950 4150
+Text Label 3950 4150 0    60   ~ 0
+S18
+Entry Wire Line
+	7800 3100 7900 3200
+Wire Wire Line
+	7800 3100 7700 3100
+Text Label 7700 3100 0    60   ~ 0
+S14
+Text Label 3950 4050 0    60   ~ 0
+S17
+Wire Wire Line
+	5400 5800 5300 5800
 $EndSCHEMATC
