@@ -322,7 +322,7 @@ U 1 1 58E6C015
 P 6150 5800
 F 0 "C1" H 6175 5900 50  0000 L CNN
 F 1 "C" H 6175 5700 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 6188 5650 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 6188 5650 50  0001 C CNN
 F 3 "" H 6150 5800 50  0001 C CNN
 	1    6150 5800
 	1    0    0    -1  
@@ -333,7 +333,7 @@ U 1 1 58E6C104
 P 1600 5800
 F 0 "C2" H 1625 5900 50  0000 L CNN
 F 1 "C" H 1625 5700 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 1638 5650 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 1638 5650 50  0001 C CNN
 F 3 "" H 1600 5800 50  0001 C CNN
 	1    1600 5800
 	1    0    0    -1  
@@ -344,7 +344,7 @@ U 1 1 58E6C1A1
 P 1900 5800
 F 0 "C3" H 1925 5900 50  0000 L CNN
 F 1 "C" H 1925 5700 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 1938 5650 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 1938 5650 50  0001 C CNN
 F 3 "" H 1900 5800 50  0001 C CNN
 	1    1900 5800
 	1    0    0    -1  
@@ -355,7 +355,7 @@ U 1 1 58E6C22E
 P 2200 5800
 F 0 "C4" H 2225 5900 50  0000 L CNN
 F 1 "C" H 2225 5700 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal" H 2238 5650 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 2238 5650 50  0001 C CNN
 F 3 "" H 2200 5800 50  0001 C CNN
 	1    2200 5800
 	1    0    0    -1  
@@ -803,9 +803,9 @@ Wire Wire Line
 Wire Bus Line
 	4600 3750 4600 5250
 Wire Wire Line
-	10250 2600 10150 2600
+	10150 2600 10250 2600
 Wire Wire Line
-	10150 2600 10150 700 
+	10150 650  10150 2600
 Wire Wire Line
 	10150 700  2150 700 
 Wire Wire Line
@@ -1151,5 +1151,35 @@ S14
 Text Label 3950 4050 0    60   ~ 0
 S17
 Wire Wire Line
-	5400 5800 5300 5800
+	5300 5800 5400 5800
+$Comp
+L PWR_FLAG #FLG06
+U 1 1 58F80820
+P 5350 5750
+F 0 "#FLG06" H 5350 5825 50  0001 C CNN
+F 1 "PWR_FLAG" H 5350 5850 50  0000 C CNN
+F 2 "" H 5350 5750 50  0001 C CNN
+F 3 "" H 5350 5750 50  0001 C CNN
+	1    5350 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG07
+U 1 1 58F80B98
+P 10150 650
+F 0 "#FLG07" H 10150 725 50  0001 C CNN
+F 1 "PWR_FLAG" H 10150 800 50  0000 C CNN
+F 2 "" H 10150 650 50  0001 C CNN
+F 3 "" H 10150 650 50  0001 C CNN
+	1    10150 650 
+	1    0    0    -1  
+$EndComp
+Connection ~ 10150 700 
+Wire Wire Line
+	5350 5750 5350 5800
+Connection ~ 5350 5800
+Text Label 5200 1850 0    60   ~ 0
+VBAT
+Text Label 5300 5800 0    60   ~ 0
+BAT
 $EndSCHEMATC
