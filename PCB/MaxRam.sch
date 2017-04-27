@@ -28,9 +28,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:AS6C4008-55SIN
-LIBS:atf1502als
-LIBS:Mini8085-cache
 LIBS:MaxRam-cache
 EELAYER 25 0
 EELAYER END
@@ -132,7 +129,7 @@ Entry Wire Line
 Entry Wire Line
 	7900 3400 8000 3300
 Entry Wire Line
-	7800 4650 7900 4750
+	7900 4850 8000 4750
 Entry Wire Line
 	7900 3600 8000 3500
 Entry Wire Line
@@ -502,12 +499,12 @@ TDO
 $Comp
 L +5V #PWR04
 U 1 1 58E6B6E2
-P 7650 4450
-F 0 "#PWR04" H 7650 4300 50  0001 C CNN
-F 1 "+5V" H 7650 4590 50  0000 C CNN
-F 2 "" H 7650 4450 50  0001 C CNN
-F 3 "" H 7650 4450 50  0001 C CNN
-	1    7650 4450
+P 8100 4550
+F 0 "#PWR04" H 8100 4400 50  0001 C CNN
+F 1 "+5V" H 8100 4690 50  0000 C CNN
+F 2 "" H 8100 4550 50  0001 C CNN
+F 3 "" H 8100 4550 50  0001 C CNN
+	1    8100 4550
 	1    0    0    -1  
 $EndComp
 Text Label 3900 5450 0    60   ~ 0
@@ -518,39 +515,6 @@ Text Label 3900 5750 0    60   ~ 0
 TDO
 Text Label 3900 5850 0    60   ~ 0
 TCK
-$Comp
-L CONN_01X03 J5
-U 1 1 58F2E54A
-P 7400 4550
-F 0 "J5" H 7400 4750 50  0000 C CNN
-F 1 "CONN_01X03" V 7500 4550 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7400 4550 50  0001 C CNN
-F 3 "" H 7400 4550 50  0001 C CNN
-	1    7400 4550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L CONN_01X04 J2
-U 1 1 58F2ED13
-P 1150 4250
-F 0 "J2" H 1150 4500 50  0000 C CNN
-F 1 "CONN_01X04" V 1250 4250 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 1150 4250 50  0001 C CNN
-F 3 "" H 1150 4250 50  0001 C CNN
-	1    1150 4250
-	-1   0    0    -1  
-$EndComp
-$Comp
-L CONN_01X03 J4
-U 1 1 58F308F1
-P 7500 3000
-F 0 "J4" H 7500 3200 50  0000 C CNN
-F 1 "CONN_01X03" V 7600 3000 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7500 3000 50  0001 C CNN
-F 3 "" H 7500 3000 50  0001 C CNN
-	1    7500 3000
-	-1   0    0    -1  
-$EndComp
 $Comp
 L DS1210 U4
 U 1 1 58F4ECA4
@@ -575,10 +539,6 @@ F 3 "" H 5600 5850 50  0001 C CNN
 $EndComp
 Text Label 8100 3500 0    60   ~ 0
 S18
-Text Label 7600 4650 0    60   ~ 0
-S17
-Text Label 8050 4550 0    60   ~ 0
-PIN30
 Text Label 9800 6100 0    60   ~ 0
 GND
 $Comp
@@ -599,8 +559,8 @@ NoConn ~ 3400 5550
 NoConn ~ 3400 5650
 NoConn ~ 3900 5550
 Entry Wire Line
-	7800 3100 7900 3200
-Text Label 7700 3100 0    60   ~ 0
+	7800 3400 7900 3500
+Text Label 7550 3400 0    60   ~ 0
 S14
 $Comp
 L PWR_FLAG #FLG06
@@ -668,10 +628,6 @@ Text Label 3950 1850 0    60   ~ 0
 A13
 Entry Wire Line
 	4400 3350 4500 3250
-Text Label 1300 4100 0    60   ~ 0
-Z3
-Text Label 1300 4200 0    60   ~ 0
-Z4
 Entry Wire Line
 	5000 4050 5100 3950
 Entry Wire Line
@@ -724,8 +680,6 @@ Text Label 1350 4750 0    60   ~ 0
 CsIn
 Entry Wire Line
 	5000 4250 5100 4150
-Entry Wire Line
-	5100 4200 5200 4100
 Text Label 3950 4250 0    60   ~ 0
 D3
 Text Label 5300 2050 0    60   ~ 0
@@ -750,16 +704,6 @@ Wire Bus Line
 	4600 3550 4600 5250
 Wire Bus Line
 	7900 2800 7900 5250
-Wire Wire Line
-	7750 3000 7700 3000
-Wire Wire Line
-	7750 3050 7750 3000
-Wire Wire Line
-	8100 3050 7750 3050
-Wire Wire Line
-	8100 3100 8100 3050
-Wire Wire Line
-	8200 3100 8100 3100
 Wire Bus Line
 	7900 950  7900 2700
 Connection ~ 5350 5800
@@ -768,8 +712,6 @@ Wire Wire Line
 Connection ~ 10150 700 
 Wire Wire Line
 	5300 5800 5400 5800
-Wire Wire Line
-	7800 3100 7700 3100
 Wire Wire Line
 	9700 650  9700 700 
 Connection ~ 9850 700 
@@ -796,17 +738,10 @@ Wire Wire Line
 	10000 850  10000 3200
 Wire Wire Line
 	10000 3200 10250 3200
-Connection ~ 7600 2700
-Wire Wire Line
-	7800 2700 7800 2900
-Wire Wire Line
-	7800 2900 7700 2900
 Wire Wire Line
 	7600 1350 7600 2700
 Wire Wire Line
-	7350 2700 7800 2700
-Wire Wire Line
-	7350 3700 7350 2700
+	7350 2700 7350 3700
 Wire Wire Line
 	7500 1450 7500 2600
 Wire Wire Line
@@ -842,15 +777,9 @@ Connection ~ 5350 6100
 Wire Wire Line
 	5800 2050 5300 2050
 Wire Wire Line
-	8050 4550 7600 4550
-Wire Wire Line
-	8050 3400 8050 4550
+	8050 3400 8050 4200
 Wire Wire Line
 	8200 3400 8050 3400
-Wire Wire Line
-	7800 4650 7600 4650
-Wire Wire Line
-	7650 4450 7600 4450
 Wire Bus Line
 	5450 950  5450 3450
 Wire Wire Line
@@ -863,8 +792,6 @@ Wire Wire Line
 	7150 4850 7150 3900
 Wire Wire Line
 	1950 2450 2250 2450
-Wire Wire Line
-	1350 4300 1850 4300
 Wire Wire Line
 	1750 2650 2250 2650
 Wire Wire Line
@@ -1184,10 +1111,6 @@ Wire Wire Line
 Wire Wire Line
 	1400 1300 1400 4100
 Wire Wire Line
-	1400 4100 1350 4100
-Wire Wire Line
-	1450 4200 1350 4200
-Wire Wire Line
 	1450 1150 1450 4200
 Wire Wire Line
 	1450 1150 4100 1150
@@ -1261,8 +1184,6 @@ Entry Wire Line
 	4650 3000 4750 3100
 Text Label 3950 3000 0    60   ~ 0
 S12
-Text Label 8100 3100 0    60   ~ 0
-PIN29
 Wire Wire Line
 	3950 2850 4650 2850
 Entry Wire Line
@@ -1289,11 +1210,82 @@ Entry Wire Line
 	4650 2350 4750 2450
 Text Label 3950 2350 0    60   ~ 0
 S15
-NoConn ~ 1350 4400
 Entry Wire Line
 	4650 2600 4750 2700
 Wire Wire Line
 	4650 2600 4050 2600
 Text Label 3950 2550 0    60   ~ 0
 S18
+$Comp
+L GS3 J5
+U 1 1 59010164
+P 8300 4650
+F 0 "J5" H 8350 4850 50  0000 C CNN
+F 1 "GS3" H 8350 4451 50  0000 C CNN
+F 2 "Connectors:GS3" V 8388 4576 50  0001 C CNN
+F 3 "" H 8300 4650 50  0001 C CNN
+	1    8300 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L GS3 J4
+U 1 1 590101E9
+P 7650 3100
+F 0 "J4" H 7700 3300 50  0000 C CNN
+F 1 "GS3" H 7800 3000 50  0000 C CNN
+F 2 "Connectors:GS3" V 7738 3026 50  0001 C CNN
+F 3 "" H 7650 3100 50  0001 C CNN
+	1    7650 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 4750 8150 4750
+Wire Wire Line
+	8100 4550 8150 4550
+Text Label 8000 4750 0    60   ~ 0
+S17
+Wire Wire Line
+	8450 4650 8550 4650
+Wire Wire Line
+	8550 4650 8550 4200
+Wire Wire Line
+	8550 4200 8050 4200
+Wire Wire Line
+	7600 2700 7350 2700
+Wire Wire Line
+	7800 3400 7450 3400
+Wire Wire Line
+	7450 3400 7450 3200
+Wire Wire Line
+	7450 3200 7500 3200
+Wire Wire Line
+	7500 3000 7350 3000
+Connection ~ 7350 3000
+Wire Wire Line
+	8200 3100 7800 3100
+Text Label 7950 3100 0    60   ~ 0
+PIN29
+Text Label 8050 4200 0    60   ~ 0
+PIN30
+$Comp
+L CONN_01X03 J2
+U 1 1 59027198
+P 1150 4200
+F 0 "J2" H 1150 4400 50  0000 C CNN
+F 1 "CONN_01X03" V 1250 4200 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1150 4200 50  0001 C CNN
+F 3 "" H 1150 4200 50  0001 C CNN
+	1    1150 4200
+	-1   0    0    -1  
+$EndComp
+Text Label 1350 4100 0    60   ~ 0
+Z3
+Text Label 1350 4200 0    60   ~ 0
+Z4
+Wire Wire Line
+	1400 4100 1350 4100
+Wire Wire Line
+	1450 4200 1350 4200
+Wire Wire Line
+	1350 4300 1850 4300
 $EndSCHEMATC
