@@ -604,8 +604,6 @@ Text Label 6150 1450 0    60   ~ 0
 nOE
 Text Label 6150 1350 0    60   ~ 0
 nWE
-Text Label 1350 4300 0    60   ~ 0
-WE_in
 Entry Wire Line
 	5000 4750 5100 4650
 Entry Wire Line
@@ -665,17 +663,6 @@ Text Label 1350 4950 0    60   ~ 0
 Z1
 Text Label 1350 5050 0    60   ~ 0
 Z2
-$Comp
-L CONN_01X05 J8
-U 1 1 58FC5342
-P 1150 4850
-F 0 "J8" H 1150 5150 50  0000 C CNN
-F 1 "CONN_01X05" V 1250 4850 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm" H 1150 4850 50  0001 C CNN
-F 3 "" H 1150 4850 50  0001 C CNN
-	1    1150 4850
-	-1   0    0    -1  
-$EndComp
 Text Label 1350 4750 0    60   ~ 0
 CsIn
 Entry Wire Line
@@ -729,7 +716,7 @@ Wire Wire Line
 Wire Wire Line
 	1950 2450 1950 4750
 Wire Wire Line
-	1850 4300 1850 1350
+	1850 1350 1850 5350
 Wire Wire Line
 	1750 2750 1750 4850
 Wire Wire Line
@@ -1109,7 +1096,7 @@ Wire Wire Line
 Wire Wire Line
 	4600 1300 1400 1300
 Wire Wire Line
-	1400 1300 1400 4100
+	1400 1300 1400 4250
 Wire Wire Line
 	1450 1150 1450 4200
 Wire Wire Line
@@ -1268,24 +1255,34 @@ PIN29
 Text Label 8050 4200 0    60   ~ 0
 PIN30
 $Comp
-L CONN_01X03 J2
-U 1 1 59027198
-P 1150 4200
-F 0 "J2" H 1150 4400 50  0000 C CNN
-F 1 "CONN_01X03" V 1250 4200 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1150 4200 50  0001 C CNN
-F 3 "" H 1150 4200 50  0001 C CNN
-	1    1150 4200
+L CONN_01X08 J8
+U 1 1 59036A44
+P 1150 5000
+F 0 "J8" H 1150 5450 50  0000 C CNN
+F 1 "CONN_01X08" V 1250 5000 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 1150 5000 50  0001 C CNN
+F 3 "" H 1150 5000 50  0001 C CNN
+	1    1150 5000
 	-1   0    0    -1  
 $EndComp
-Text Label 1350 4100 0    60   ~ 0
+Wire Wire Line
+	1850 5350 1350 5350
+Wire Wire Line
+	1450 4200 2150 4200
+Wire Wire Line
+	2150 4200 2150 5250
+Wire Wire Line
+	2150 5250 1350 5250
+Wire Wire Line
+	1400 4250 2100 4250
+Wire Wire Line
+	2100 4250 2100 5150
+Wire Wire Line
+	2100 5150 1350 5150
+Text Label 1350 5150 0    60   ~ 0
 Z3
-Text Label 1350 4200 0    60   ~ 0
+Text Label 1350 5250 0    60   ~ 0
 Z4
-Wire Wire Line
-	1400 4100 1350 4100
-Wire Wire Line
-	1450 4200 1350 4200
-Wire Wire Line
-	1350 4300 1850 4300
+Text Label 1350 5350 0    60   ~ 0
+CS_in
 $EndSCHEMATC
