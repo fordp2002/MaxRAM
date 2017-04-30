@@ -28,6 +28,9 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:AS6C4008-55SIN
+LIBS:atf1502als
+LIBS:Mini8085-cache
 LIBS:MaxRam-cache
 EELAYER 25 0
 EELAYER END
@@ -1284,5 +1287,5 @@ Z3
 Text Label 1350 5250 0    60   ~ 0
 Z4
 Text Label 1350 5350 0    60   ~ 0
-CS_in
+WE_in
 $EndSCHEMATC

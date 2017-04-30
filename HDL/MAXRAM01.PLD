@@ -9,36 +9,47 @@ Location UK;
 /* Device   f1502ispplcc44;*/
 Device   virtual;
 
-/* *************** INPUT PINS *********************/
-PIN    4 = AD0;		/* ADDRESS PINS                    */
-PIN    5 = AD1;		/*                                 */
+PROPERTY ATMEL {TDI_PULLUP = ON};
+PROPERTY ATMEL {TMS_PULLUP = ON};
 
-PIN    1 = !CsIn;		/*                                 */
-PIN   44 = !We;		/*                                 */
+/* *************** ADDRESS IN ******************************/
+PIN    28 = AD0;		/*                                 */
+PIN    27 = AD1;		/*                                 */
+PIN    25 = AD12;		/*                                 */
+PIN    21 = AD13;		/*                                 */
 
-PIN   16 = DB0;		/* DATA BUS IN                     */
-PIN   17 = DB1;		/*                                 */ 
-PIN   18 = DB2;		/*                                 */ 
-PIN   19 = DB3;		/*                                 */ 
-PIN   20 = DB4;		/*                                 */ 
-PIN   21 = DB5;		/*                                 */ 
-PIN   24 = DB6;		/*                                 */ 
-PIN   25 = DB7;		/*                                 */ 
+/* ************** CONTROL IN *******************************/
+PIN    1 = !CsIn;	      /*                                 */
+PIN    2 = !OeIn;	      /*                                 */
+PIN   11 = !WeIn;	      /*                                 */
+PIN   43 = CLK;         /*                                 */ 
+PIN	44 = !Romsel;     /*                                 */
 
-PIN   43 = CLK;		/*                                 */ 
-PIN    2 = !Romsel;	/*                                 */ 
+/* ************** DATA BUS *********************************/
+PIN   29 = DB0;		/*                                 */
+PIN   31 = DB1;		/*                                 */ 
+PIN   33 = DB2;		/*                                 */ 
+PIN   36 = DB3;		/*                                 */ 
+PIN   37 = DB4;		/*                                 */ 
+PIN   39 = DB5;		/*                                 */ 
+PIN   41 = DB6;		/*                                 */ 
+PIN   40 = DB7;		/*                                 */ 
+ 
+/* *************** OUTPUT PINS *****************************/
+PIN   20 = SL12;	      /*                                 */ 
+PIN   21 = SL13;	      /*                                 */ 
+PIN   17 = SL14;	      /*                                 */ 
+PIN   12 = SL15;	      /*                                 */ 
+PIN   18 = SL16;        /*                                 */ 
+PIN   19 = SL17;	      /*                                 */ 
+PIN   14 = SL18;	      /*                                 */ 
 
-/* *************** OUTPUT PINS *********************/
-PIN   28 = SL0;		/*                                 */ 
-PIN   29 = SL1;		/*                                 */ 
-PIN   31 = SL2;		/*                                 */ 
-PIN   33 = SL3;		/*                                 */ 
-PIN   34 = SL4;		/*                                 */ 
+PIN   26 = !FlashCE;
+PIN   34 = !RamCE;
+PIN   16 = !WR;
+PIN   24 = !Oe;
 
-PIN   40 = !FlashCE;
-PIN   41 = !RamCE;
-
-/* *************** INTENAL D TYPES *****************/
+/* *************** INTERNAL D TYPES ************************/
 PINNODE   611  = SD0;
 PINNODE   612  = SD1;
 PINNODE   613  = SD2;
@@ -47,13 +58,6 @@ PINNODE   615  = SD4;
 PINNODE   616  = SD5;
 PINNODE   617  = SD6;
 PINNODE   618  = SD7;
-
-/* ******************** LOGIC **********************/
-[SD0..SD7].d		= [DB0..DB7];
-[SD0..SD6].CE 		= Romsel & !We;
-SD7.CE 			= Romsel & !We & !AD1 & AD0 ;
-[SD0..SD7].CK 		= CLK;
-[SL0..SL4]			= [SD0..SD4].dq;
 
 /* Max RAM has 64 16KB Banks						*/
 /* 32 RAM Banks (0 - 31) and 32 Flash Banks (32 - 63)		*/
@@ -64,9 +68,19 @@ SD7.CE 			= Romsel & !We & !AD1 & AD0 ;
 /* to 0xFE31 with the MSB set						*/
 /* This setting will persist when 0xFE30 is written after	*/			
 /* Add 64 to 0xFE30 to allow writing in all banks 		*/
-/* No Flash writes allowed in the regular banks 0 - 15 	*/
-FlashCE			= (SD5 $ !SD7) & CsIn & (!We # SD4 # SD6);
-/* Ram locked when accessed in banks 0-3 or 8 - 11 		*/
-RamCE				= (!SD5 $ !SD7) & CsIn & (!We # SD2 # SD4 # SD6);
+/* No Flash writes allowed in the regular banks 0 - 15      */
 
-/* =================== END OF DESIGN INFO - NOTES FOLLOW ================= */
+/* ******************** LOGIC *******************************/
+[SD0..SD7].d	= [DB0..DB7];
+[SD0..SD6].CE 	= Romsel & !WeIn;
+SD7.CE 		= Romsel & !WeIn & !AD1 & AD0;
+[SD0..SD7].CK 	= CLK;
+SL12              = AD12;
+SL13			= AD13;
+[SL14..SL18]	= [SD0..SD4].dq;
+WR			= WeIn;
+Oe			= !OeIn;
+FlashCE		= (SD5 $ !SD7) & CsIn & (!WeIn # SD4 # SD6);
+RamCE			= (!SD5 $ !SD7) & CsIn & (!WeIn # SD2 # SD4 # SD6);
+
+/* Ram locked when accessed in banks 0-3 or 8 - 11 		*/
