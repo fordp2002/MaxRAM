@@ -6,50 +6,49 @@ Designer FordP2002;
 Company  None;
 Assembly None;
 Location UK;
-/* Device   f1502ispplcc44;*/
-Device   virtual;
+Device   f1502ispplcc44;
 
 PROPERTY ATMEL {TDI_PULLUP = ON};
 PROPERTY ATMEL {TMS_PULLUP = ON};
 
-/* *************** ADDRESS IN ******************************/
-PIN    28 = AD0;		/*                                 */
-PIN    27 = AD1;		/*                                 */
-PIN    25 = AD12;		/*                                 */
-PIN    21 = AD13;		/*                                 */
+// ADDRESS INPUTS
+PIN    28 = AD0;
+PIN    27 = AD1;
+PIN    25 = AD12;
+PIN    21 = AD13;
 
-/* ************** CONTROL IN *******************************/
-PIN    1 = !CsIn;	      /*                                 */
-PIN    2 = !OeIn;	      /*                                 */
-PIN   11 = !WeIn;	      /*                                 */
-PIN   43 = CLK;         /*                                 */ 
-PIN	44 = !Romsel;     /*                                 */
+// CONTROL LINE INPUTS
+PIN     1 = !CsIn;
+PIN     2 = !OeIn;
+PIN    11 = !WeIn;
+PIN    43 = CLK;
+PIN	 44 = !Romsel;
 
-/* ************** DATA BUS *********************************/
-PIN   29 = DB0;		/*                                 */
-PIN   31 = DB1;		/*                                 */ 
-PIN   33 = DB2;		/*                                 */ 
-PIN   36 = DB3;		/*                                 */ 
-PIN   37 = DB4;		/*                                 */ 
-PIN   39 = DB5;		/*                                 */ 
-PIN   41 = DB6;		/*                                 */ 
-PIN   40 = DB7;		/*                                 */ 
+// DATA BUS INPUTS
+PIN    29 = DB0;
+PIN    31 = DB1;
+PIN    33 = DB2;
+PIN    36 = DB3;
+PIN    37 = DB4;
+PIN    39 = DB5;
+PIN    41 = DB6;
+PIN    40 = DB7;
  
-/* *************** OUTPUT PINS *****************************/
-PIN   20 = SL12;	      /*                                 */ 
-PIN   21 = SL13;	      /*                                 */ 
-PIN   17 = SL14;	      /*                                 */ 
-PIN   12 = SL15;	      /*                                 */ 
-PIN   18 = SL16;        /*                                 */ 
-PIN   19 = SL17;	      /*                                 */ 
-PIN   14 = SL18;	      /*                                 */ 
+// Select outputs note: SL12 and SL13 can also be just buffered copies of A12 and A13
+PIN    20 = SL12;
+PIN    21 = SL13;
+PIN    17 = SL14;
+PIN    12 = SL15;
+PIN    18 = SL16;
+PIN    19 = SL17;
+PIN    14 = SL18;
 
-PIN   26 = !FlashCE;
-PIN   34 = !RamCE;
-PIN   16 = !WR;
-PIN   24 = !Oe;
+PIN    26 = !FlashCE;
+PIN    34 = !RamCE;
+PIN    16 = !WR;
+PIN    24 = !Oe;
 
-/* *************** INTERNAL D TYPES ************************/
+// INTERNAL D TYPES
 PINNODE   611  = SD0;
 PINNODE   612  = SD1;
 PINNODE   613  = SD2;
@@ -59,28 +58,28 @@ PINNODE   616  = SD5;
 PINNODE   617  = SD6;
 PINNODE   618  = SD7;
 
-/* Max RAM has 64 16KB Banks						*/
-/* 32 RAM Banks (0 - 31) and 32 Flash Banks (32 - 63)		*/
-/* Banks 0 - 15 are the regular BBC banks				*/
-/* Banks 16 - 63 are extra banks that are not visible to 	*/
-/*  the BBC MOS or normal software					*/
-/* The RAM banks and Flash banks can be swapped by writing  */
-/* to 0xFE31 with the MSB set						*/
-/* This setting will persist when 0xFE30 is written after	*/			
-/* Add 64 to 0xFE30 to allow writing in all banks 		*/
-/* No Flash writes allowed in the regular banks 0 - 15      */
+// Max RAM has 64 16KB Banks
+// 32 RAM Banks (0 - 31) and 32 Flash Banks (32 - 63)
+// Banks 0 - 15 are the regular BBC banks
+// Banks 16 - 63 are extra banks that are not visible to
+//  the BBC MOS or normal software
+// The RAM banks and Flash banks can be swapped by writing
+// to 0xFE31 with the MSB set
+// This setting will persist when 0xFE30 is written after
+// Add 64 to 0xFE30 to allow writing in all banks
+// No Flash writes allowed in the regular banks 0 - 15
 
-/* ******************** LOGIC *******************************/
-[SD0..SD7].d	= [DB0..DB7];
-[SD0..SD6].CE 	= Romsel & !WeIn;
-SD7.CE 		= Romsel & !WeIn & !AD1 & AD0;
-[SD0..SD7].CK 	= CLK;
-SL12              = AD12;
-SL13			= AD13;
-[SL14..SL18]	= [SD0..SD4].dq;
-WR			= WeIn;
-Oe			= !OeIn;
-FlashCE		= (SD5 $ !SD7) & CsIn & (!WeIn # SD4 # SD6);
-RamCE			= (!SD5 $ !SD7) & CsIn & (!WeIn # SD2 # SD4 # SD6);
+// LOGIC
+[SD0..SD7].d   = [DB0..DB7];
+[SD0..SD6].CE  = Romsel & (!WeIn);
+SD7.CE         = Romsel & (!WeIn) & (!AD1) & AD0;
+[SD0..SD7].CK  = CLK;
+SL12           = AD12;
+SL13           = AD13;
+[SL14..SL18]   = [SD0..SD4];
+WR             = WeIn;
+Oe             = !OeIn;
+FlashCE        = (SD5 $ (!SD7)) & CsIn & ((!WeIn) # SD4 # SD6);
+RamCE          = ((!SD5) $ !SD7) & CsIn & ((!WeIn) # SD2 # SD4 # SD6);
 
-/* Ram locked when accessed in banks 0-3 or 8 - 11 		*/
+// Ram locked when accessed in banks 0-3 or 8 - 11
